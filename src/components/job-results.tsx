@@ -14,7 +14,8 @@ interface JobResultsProps {
 const JobResults = async ({ filterValues, page = 1 }: JobResultsProps) => {
   const { q, type, location, remote } = filterValues;
   const jobsPerPage = 5;
-  const skip = (page - 1) * jobsPerPage;
+  const currentPage = Math.max(page, 1);
+  const skip = (currentPage - 1) * jobsPerPage;
   const searchString = q
     ?.split(" ")
     .filter((word) => word.length > 0)

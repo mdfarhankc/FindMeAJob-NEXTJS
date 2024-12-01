@@ -31,7 +31,7 @@ export async function approveJob(
     });
 
     revalidatePath("/");
-    return {};
+    revalidatePath("/admin");
   } catch (error) {
     let message = "Unexpected error";
     if (error instanceof Error) {
@@ -39,6 +39,7 @@ export async function approveJob(
     }
     return { error: message };
   }
+  redirect("/admin");
 }
 
 export async function deleteJob(
@@ -66,6 +67,7 @@ export async function deleteJob(
     });
 
     revalidatePath("/");
+    revalidatePath("/admin");
   } catch (error) {
     let message = "Unexpected error";
     if (error instanceof Error) {
